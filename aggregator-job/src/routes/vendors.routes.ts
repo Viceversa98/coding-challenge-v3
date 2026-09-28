@@ -8,8 +8,11 @@ import { Response, Router } from "express";
 import { listStores } from "../services/catalog.service";
 import { processDeduction } from "../services/deduction.service";
 import { validateRequest } from "../middleware/validateRequest";
+import workbenchRoutes from "./workbench.routes";
 
 const router = Router();
+
+router.use("/workbench", workbenchRoutes);
 
 router.get("/stores", async (_req, res: Response) => {
   const stores = await listStores();
