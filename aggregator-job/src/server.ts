@@ -1,8 +1,9 @@
 import app from "./app";
+import { testConnection } from "./config/database";
+import { pool } from "./config/drizzle";
 import { env } from "./config/env";
 import { logger } from "./utils/logger";
 import { sequelize } from "./models";
-import { testConnection } from "./config/database";
 
 const startServer = async () => {
   try {
@@ -24,6 +25,7 @@ const startServer = async () => {
 
         try {
           await sequelize.close();
+          await pool.end();
           logger.info("Database connections closed");
           process.exit(0);
         } catch (error) {

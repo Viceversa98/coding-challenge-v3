@@ -1,0 +1,32 @@
+---
+description: Gortex code intelligence — prefer graph tools over file reads
+alwaysApply: true
+---
+
+<!-- gortex:communities:start -->
+## Community Skills
+
+| Area | Description | Explore |
+|------|-------------|---------|
+| 1 Dirs Seedtimeseriesdata | 52 symbols | `analyze(operation:"communities", id:"community-24")` |
+| Services 2 Dirs | 52 symbols | `analyze(operation:"communities", id:"community-7")` |
+| Caveman Compress Scripts | 39 symbols | `analyze(operation:"communities", id:"community-1")` |
+| Scripts 1 Dirs | 39 symbols | `analyze(operation:"communities", id:"community-25")` |
+| 1 Dirs File Lock | 34 symbols | `analyze(operation:"communities", id:"community-39")` |
+| 1 Dirs Strip | 33 symbols | `analyze(operation:"communities", id:"community-15")` |
+| 1 Dirs Seedbasedata | 33 symbols | `analyze(operation:"communities", id:"community-23")` |
+| 6 Dirs | 33 symbols | `analyze(operation:"communities", id:"community-17")` |
+| 2 Dirs Deductionpage | 30 symbols | `analyze(operation:"communities", id:"community-45")` |
+| Caveman Compress Scripts 1 Dirs Extract Indented Code Blocks | 27 symbols | `analyze(operation:"communities", id:"community-13")` |
+| Caveman Compress Scripts 1 Dirs Exit | 25 symbols | `analyze(operation:"communities", id:"community-37")` |
+| 1 Dirs Readjson | 22 symbols | `analyze(operation:"communities", id:"community-42")` |
+| Flyway Product Sales | 18 symbols | `analyze(operation:"communities", id:"community-22")` |
+| Flyway Product | 18 symbols | `analyze(operation:"communities", id:"community-18")` |
+| 5 Dirs | 16 symbols | `analyze(operation:"communities", id:"community-16")` |
+| Middleware | 13 symbols | `analyze(operation:"communities", id:"community-6")` |
+| Flyway Deductions | 13 symbols | `analyze(operation:"communities", id:"community-20")` |
+| Flyway Expense Events | 12 symbols | `analyze(operation:"communities", id:"community-21")` |
+| 1 Dirs Validate Inline Codes | 11 symbols | `analyze(operation:"communities", id:"community-0")` |
+| 2 Dirs Formatdate | 11 symbols | `analyze(operation:"communities", id:"community-26")` |
+
+<!-- gortex:communities:end -->

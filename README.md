@@ -54,6 +54,18 @@ npm run dev
 
 The API runs at `http://localhost:3000` by default. Adjust `.env` if your database runs elsewhere (see [`aggregator-job/README.md`](aggregator-job/README.md)).
 
+### 3. Run the UI
+
+In another terminal, from the repo root, with the API already running:
+
+```bash
+cd web
+npm install
+npm run dev
+```
+
+The page proxies `/api` to `http://localhost:3000`.
+
 ---
 
 ## What to do next

@@ -3,9 +3,15 @@ import { ValidatedRequest, ValidationType } from "../types";
 
 import { z } from "zod";
 
+export type ValidateRequestOptions = {
+  /** When set, Zod failures use the deduction error envelope instead of Validation Error. */
+  invalidRequestMessage?: (error: z.ZodError) => string;
+};
+
 export const validateRequest = <T extends z.ZodTypeAny>(
   schema: T,
   validationType: ValidationType = "body",
+  options?: ValidateRequestOptions,
 ) => {
   return (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -18,6 +24,14 @@ export const validateRequest = <T extends z.ZodTypeAny>(
       return next();
     } catch (error) {
       if (error instanceof z.ZodError) {
+        if (options?.invalidRequestMessage) {
+          return res.status(400).json({
+            status: "error",
+            error: "INVALID_REQUEST",
+            message: options.invalidRequestMessage(error),
+          });
+        }
+
         const formattedErrors = error.errors.map((err) => ({
           path: err.path.join("."),
           message: err.message,

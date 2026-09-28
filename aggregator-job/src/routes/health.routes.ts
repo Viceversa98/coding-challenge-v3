@@ -4,8 +4,8 @@ import { getCurrentTimestamp } from "../utils/dateUtils";
 import { sequelize } from "../config/database";
 
 const router = Router();
-
-router.get("/health", async (_req: Request, res: Response) => {
+//remove health from the path
+router.get("/", async (_req: Request, res: Response) => {
   const timestamp = getCurrentTimestamp();
 
   try {

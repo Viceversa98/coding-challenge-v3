@@ -1,29 +1,31 @@
 import {
   DeductionsValidatedRequest,
+  deductionValidationMessage,
   deductionsQuerySchema,
 } from "../validators/vendors.validators";
 import { Response, Router } from "express";
 
-import { logger } from "../utils/logger";
+import { listStores } from "../services/catalog.service";
+import { processDeduction } from "../services/deduction.service";
 import { validateRequest } from "../middleware/validateRequest";
 
 const router = Router();
 
+router.get("/stores", async (_req, res: Response) => {
+  const stores = await listStores();
+  res.status(200).json({ stores });
+});
+
 router.post(
   "/deductions",
-  validateRequest(deductionsQuerySchema, "body"),
-  (req: DeductionsValidatedRequest, res: Response) => {
-    // Set by validateRequest middleware; safe to assert
+  validateRequest(deductionsQuerySchema, "body", {
+    invalidRequestMessage: deductionValidationMessage,
+  }),
+  async (req: DeductionsValidatedRequest, res: Response) => {
     const { storeId, deductionId } = req.validatedData!;
-    logger.info(
-      `Processing deductions for store ${storeId} deductionId ${deductionId}`,
-    );
+    const result = await processDeduction(storeId, deductionId);
 
-    // TODO: Implement the logic to process the deduction
-
-    res.status(200).json({
-      status: "ok",
-    });
+    res.status(200).json(result);
   },
 );
 
