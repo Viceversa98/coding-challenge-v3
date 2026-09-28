@@ -96,6 +96,34 @@ export const fetchHealth = async (): Promise<HealthResponse> => {
   throw new Error("Health check failed");
 };
 
+export const requestJson = async <T>(
+  path: string,
+  init?: RequestInit,
+): Promise<T> => {
+  const response = await fetch(path, init);
+  if (response.status === 204) {
+    return undefined as T;
+  }
+
+  const body = await readJson(response);
+  if (!response.ok) {
+    if (isApiErrorBody(body)) {
+      throw new ApiRequestError(response.status, body);
+    }
+
+    const message =
+      typeof body === "object" &&
+      body !== null &&
+      "error" in body &&
+      typeof body.error === "string"
+        ? body.error
+        : "Request failed";
+    throw new Error(message);
+  }
+
+  return body as T;
+};
+
 export const processDeduction = async (input: {
   storeId: string;
   deductionId: string;
